@@ -1,6 +1,6 @@
 # Varnan - Research Paper to Podcast Generator 🎙️
 
-![Varnan Logo](assets/varnan_logo.png)
+![Varnan Logo](/varnan/assets/varnan_logo.png)
 
 **Varnan** is an intelligent pipeline that transforms research papers into high-quality, conversational podcast audio.  
 It simplifies academic research consumption by summarizing dense papers, creating a multi-speaker podcast script, and converting it into professional audio.
