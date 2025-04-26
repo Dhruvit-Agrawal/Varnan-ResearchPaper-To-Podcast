@@ -43,34 +43,7 @@ It simplifies academic research consumption by summarizing dense papers, creatin
 - **dotenv** — Environment Variable Management
 - **agentops** — Optional Agent Monitoring
 
-## 🚀 Getting Started
-
-### 1. Clone the repository
-```bash
-git clone https://github.com/yourusername/varnan.git
-cd varnan
-2. Install dependencies
-bash
-Copy
-Edit
-pip install -r requirements.txt
-3. Configure environment variables
-Create a .env file in the root directory:
-
-env
-Copy
-Edit
-OPENAI_API_KEY=your_openai_key
-SERPER_API_KEY=your_serper_key
-AGENTOPS_API_KEY=your_agentops_key
-4. Run the Streamlit app
-bash
-Copy
-Edit
-streamlit run app.py
-Upload a research paper and get your podcast! 🎧
-
-🧠 Future Improvements
+## 🧠 Future Improvements
 🗣️ Support custom voices and accents
 
 🌍 Multilingual podcast generation
@@ -79,6 +52,6 @@ Upload a research paper and get your podcast! 🎧
 
 ☁️ Cloud deployment for public access
 
-🤝 Contributing
+## 🤝 Contributing
 Contributions are welcome!
 Please open an issue first to discuss your idea or improvement.
