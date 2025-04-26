@@ -1,0 +1,63 @@
+research_task:
+  description: >
+    Conducts a detailed research synthesis strictly focused on the provided {pdf_content}. It must extract core concepts, identify related scholarly or practical materials, and list only relevant facts that support or extend the ideas in the paper.
+  input_context_key: research_context
+  output_context_key: research_facts
+  expected_output: >
+    A clean, structured document containing high-quality references, examples, insights, or findings that are directly related to {pdf_content}. No filler or general resources allowed.
+  output_file: outputs/research_facts.txt
+  agent: research_agent
+  max_retries: 1
+
+
+summary_task:
+  description: >
+    Summarizes the researched facts into concise, accurate, and well-structured summaries while retaining technical depth.
+  input_context_key: 
+    -research_facts
+    -string_knowledge_source
+  output_context_key: summary
+  agent: summary_agent
+  expected_output: >
+    A comprehensive summary document with all essential details clearly explained and structured.
+  output_file: outputs/summary.txt
+  max_retries: 2
+
+script_writing_task:
+  description: >
+    Converts the research summary into a captivating podcast script with a dynamic three-character format: Host, Expert, and Learner.
+  input_context_key: summary
+  output_context_key: script_flow
+  expected_output: >
+    A well-written script with engaging dialogues, seamless transitions, and storytelling techniques designed for audio consumption.
+    - the structure of script should STRICTLY follow the regex pattern
+      patterns = {{
+          'expert': r'\*\*Expert.*?\*\*:\s*(.*?)(?=\n\*\*[A-Z][a-z]+.*?\*\*:|\Z)',
+          'learner': r'\*\*Learner.*?\*\*:\s*(.*?)(?=\n\*\*[A-Z][a-z]+.*?\*\*:|\Z)',
+      }}
+
+  output_file: outputs/script_flow.txt
+  agent: script_writer_agent
+  max_retries: 1
+
+script_analyser_task:
+  description: >
+    -Refines the script flow to ensure it is completely ready for TTS conversion with proper formatting, dialogue structure, and speech flow.
+    - the structure of script should STRICTLY follow the regex pattern
+      patterns = {{
+          'expert': r'\*\*Expert.*?\*\*:\s*(.*?)(?=\n\*\*[A-Z][a-z]+.*?\*\*:|\Z)',
+          'learner': r'\*\*Learner.*?\*\*:\s*(.*?)(?=\n\*\*[A-Z][a-z]+.*?\*\*:|\Z)',
+      }}
+    
+  input_context_key: script_flow
+  output_context_key: final_script
+  expected_output: >
+    A polished script, formatted with character names and dialogues, ensuring high-quality TTS delivery.
+    - the structure of script should STRICTLY follow the regex pattern
+      patterns = {{
+          'expert': r'\*\*Expert.*?\*\*:\s*(.*?)(?=\n\*\*[A-Z][a-z]+.*?\*\*:|\Z)',
+          'learner': r'\*\*Learner.*?\*\*:\s*(.*?)(?=\n\*\*[A-Z][a-z]+.*?\*\*:|\Z)',
+      }}
+  output_file: outputs/final_script.txt
+  agent: script_analyser_agent
+  max_retries: 1

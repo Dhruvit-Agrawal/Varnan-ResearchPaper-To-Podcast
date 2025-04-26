@@ -1,0 +1,10 @@
+streamlit
+python-dotenv
+PyMuPDF
+crewAI
+crewai-tools
+pydub
+edge-tts
+litellm
+pydantic
+agentops
